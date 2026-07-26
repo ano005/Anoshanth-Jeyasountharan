@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr Anoshanth Jeyasountharan | Deep-Tech Product Strategy & Microfluidics Engineering</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+        --cream: #eeeade;
+        --cream-alt: #f7f4ec;
+        --black: #141413;
+        --ink: #262624;
+        --muted: #6b6a63;
+        --line: #ddd9cc;
+        --blue: #2f5aff;
+        --accent: #2f5aff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        color: var(--ink);
+        line-height: 1.6;
+        background: var(--cream);
+    }
+
+    .serif {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    /* Nav */
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 1.6rem 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+        background: var(--cream);
+        border-bottom: 1px solid var(--line);
+    }
+
+    .nav-logo {
+        font-weight: 800;
+        font-size: 1.3rem;
+        letter-spacing: -0.5px;
+        color: var(--black);
+        text-transform: uppercase;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2.2rem;
+    }
+
+    nav a.nav-link {
+        text-decoration: none;
+        color: var(--black);
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: opacity 0.2s;
+    }
+
+    nav a.nav-link:hover { color: var(--blue); }
+
+    .nav-cta {
+        background: var(--black);
+        color: var(--cream);
+        padding: 0.65rem 1.5rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--blue); }
+
+    /* Hero */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 4rem;
+        padding-top: 8rem;
+        position: relative;
+    }
+
+    .hero-inner {
+        max-width: 1300px;
+        margin: 0 auto;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 4rem;
+        align-items: start;
+    }
+
+    .hero h1 {
+        font-size: 4.4rem;
+        line-height: 1.1;
+        color: var(--black);
+        font-weight: 800;
+        letter-spacing: -1.8px;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero h1 .accent {
+        color: var(--blue);
+    }
+
+    .hero-side {
+        padding-top: 1rem;
+    }
+
+    .hero-side p {
+        font-size: 1.35rem;
+        color: var(--ink);
+        line-height: 1.6;
+    }
+
+    .hero-cta {
+        margin-top: 3rem;
+        display: flex;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+    }
+
+    .hero-cta-secondary {
+        margin-top: 0.9rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+        max-width: 640px;
+    }
+
+    .btn-small {
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+        border-width: 1px;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 560px) {
+        .hero-cta-secondary {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 0.9rem 1.9rem;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .btn-primary {
+        background: var(--black);
+        color: var(--cream);
+    }
+
+    .btn-primary:hover { background: var(--blue); }
+
+    .btn-outline {
+        border: 1.5px solid var(--black);
+        color: var(--black);
+        background: transparent;
+    }
+
+    .btn-outline:hover { border-color: var(--blue); color: var(--blue); background: transparent; }
+
+    .hero-block-title {
+        max-width: 1300px;
+        margin: 5rem auto 1.5rem;
+        font-family: -apple-system, sans-serif;
+        font-size: 1.15rem;
+        font-weight: 500;
+        color: var(--muted);
+        text-align: center;
+    }
+
+    .hero-block {
+        margin-top: 2rem;
+        background: var(--black);
+        border-radius: 24px;
+        padding: 0;
+        max-width: 1300px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        color: var(--cream);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-block > div {
+        position: relative;
+        z-index: 2;
+        padding: 3rem 2.4rem;
+        border-right: 1px solid rgba(238,234,222,0.14);
+        border-bottom: 1px solid rgba(238,234,222,0.14);
+        transition: background 0.25s;
+    }
+
+    .hero-block > div:hover {
+        background: rgba(47,90,255,0.08);
+    }
+
+    .hero-block > div:nth-child(3n) {
+        border-right: none;
+    }
+
+    .hero-stat-number {
+        font-size: 2.8rem;
+        font-weight: 800;
+        color: var(--cream);
+        margin-bottom: 0.7rem;
+    }
+
+    .hero-block > div:hover .hero-stat-number {
+        color: var(--cream);
+    }
+
+    .hero-stat-label {
+        font-size: 0.92rem;
+        color: #b8b6ac;
+        line-height: 1.45;
+    }
+
+    @media (max-width: 900px) {
+        .hero-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+        .hero h1 { font-size: 2.6rem; }
+        .hero-side { padding-top: 0; }
+        .hero-block { grid-template-columns: repeat(2, 1fr); }
+        .hero-block > div { padding: 2rem 1.6rem; }
+        .hero-block > div:nth-child(3n) { border-right: 1px solid rgba(238,234,222,0.14); }
+        .hero-block > div:nth-child(2n) { border-right: none; }
+    }
+
+    /* Container */
+    .container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 4rem;
+    }
+
+    section { padding: 8rem 0; }
+
+    section.alt-bg { background: var(--cream-alt); }
+
+    .eyebrow {
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.8px;
+        color: var(--blue);
+        margin-bottom: 1.2rem;
+    }
+
+    h2.section-title {
+        font-size: 2.8rem;
+        margin-bottom: 0;
+        color: var(--black);
+        font-weight: 800;
+        letter-spacing: -1px;
+        padding-bottom: 1.2rem;
+        position: relative;
+    }
+
+    h2.section-title::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 56px;
+        height: 4px;
+        background: var(--blue);
+        border-radius: 2px;
+    }
+
+    .section-subtitle {
+        color: var(--muted);
+        font-size: 1.2rem;
+        margin-top: 1.6rem;
+        margin-bottom: 3.5rem;
+        max-width: 700px;
+        font-family: Georgia, serif;
+    }
+
+    /* Profile */
+    .profile-text p {
+        margin-bottom: 1.6rem;
+        font-size: 1.2rem;
+        color: var(--ink);
+        max-width: 800px;
+        font-family: Georgia, serif;
+        line-height: 1.75;
+    }
+
+    /* Tabs */
+    .tab-nav {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 3rem;
+        border-bottom: 2px solid var(--line);
+    }
+
+    .tab-btn {
+        background: none;
+        border: none;
+        padding: 1rem 1.8rem;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--muted);
+        cursor: pointer;
+        border-bottom: 3px solid transparent;
+        transition: all 0.25s;
+        margin-bottom: -2px;
+        font-family: inherit;
+    }
+
+    .tab-btn.active {
+        color: var(--black);
+        border-bottom-color: var(--blue);
+    }
+
+    .tab-btn:hover { color: var(--blue); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; animation: fadeIn 0.35s ease; }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Experience */
+    .experience-item {
+        margin-bottom: 3.2rem;
+        padding-bottom: 2.8rem;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .experience-item:last-child { border-bottom: none; }
+
+    .experience-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .experience-title {
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: var(--black);
+        letter-spacing: -0.3px;
+    }
+
+    .experience-date {
+        font-size: 0.9rem;
+        color: var(--muted);
+        white-space: nowrap;
+        font-family: Georgia, serif;
+        font-style: italic;
+    }
+
+    .experience-company {
+        font-size: 1rem;
+        color: var(--muted);
+        font-weight: 600;
+        margin-bottom: 1.2rem;
+    }
+
+    .experience-bullets { list-style: none; }
+
+    .experience-bullets li {
+        margin-bottom: 0.9rem;
+        color: var(--ink);
+        line-height: 1.8;
+        padding-left: 1.5rem;
+        position: relative;
+        font-size: 1.02rem;
+        font-family: Georgia, serif;
+    }
+
+    .experience-bullets li::before {
+        content: '—';
+        position: absolute;
+        left: 0;
+        color: var(--blue);
+        font-weight: bold;
+    }
+
+    /* Skills grid */
+    .skills-grid {
+        display: flex;
+        flex-direction: column;
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    .skill-card {
+        background: var(--black);
+        padding: 2.6rem;
+        border-radius: 18px;
+        color: var(--cream);
+        position: relative;
+    }
+
+    .skill-connector {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        height: 3.5rem;
+    }
+
+    .skill-connector::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        background: var(--blue);
+        opacity: 0.35;
+        transform: translateX(-50%);
+    }
+
+    .skill-connector-dot {
+        position: relative;
+        z-index: 2;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background: var(--cream);
+        border: 2px solid var(--blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 0.85rem;
+        color: var(--blue);
+        align-self: center;
+    }
+
+    .skill-card h3 {
+        color: var(--cream);
+        font-size: 1.15rem;
+        margin-bottom: 1.3rem;
+        font-weight: 800;
+        letter-spacing: -0.3px;
+        font-style: normal;
+    }
+
+    .skill-card ul { list-style: none; }
+
+    .skill-card li {
+        color: #cfccc0;
+        margin-bottom: 0.7rem;
+        font-size: 0.97rem;
+        padding-left: 1.1rem;
+        position: relative;
+        font-family: Georgia, serif;
+    }
+
+    .skill-card li::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: var(--blue);
+    }
+
+    /* Education */
+    .education-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.8rem;
+    }
+
+    .education-item {
+        background: var(--cream);
+        padding: 2rem 2.2rem;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        border-top: 3px solid var(--blue);
+    }
+
+    .education-degree { font-weight: 800; color: var(--black); margin-bottom: 0.5rem; font-size: 1.08rem; letter-spacing: -0.3px; }
+    .education-school { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.3rem; font-family: Georgia, serif; }
+    .education-year { color: var(--muted); font-size: 0.85rem; font-family: Georgia, serif; font-style: italic; }
+
+    .credentials-list { margin-top: 3.5rem; }
+
+    .credential-item {
+        display: flex;
+        flex-direction: column;
+        padding: 1.3rem 0;
+        border-bottom: 1px solid var(--line);
+        gap: 0.35rem;
+    }
+
+    .credential-item:last-child { border-bottom: none; }
+
+    .credential-name { font-weight: 700; color: var(--black); font-size: 1.02rem; }
+    .credential-org { color: var(--muted); font-size: 0.9rem; font-family: Georgia, serif; font-style: italic; }
+
+    /* Footer */
+    footer {
+        background: var(--black);
+        color: var(--cream);
+        padding: 6rem 4rem 3.5rem;
+        text-align: center;
+    }
+
+    footer .footer-title {
+        font-size: 2.6rem;
+        font-weight: 800;
+        color: var(--cream);
+        margin-bottom: 1.2rem;
+        letter-spacing: -1px;
+    }
+
+    footer .footer-tagline {
+        color: #b8b6ac;
+        font-size: 1.15rem;
+        margin-bottom: 3rem;
+        font-family: Georgia, serif;
+        font-style: italic;
+    }
+
+    footer .footer-contact {
+        display: flex;
+        justify-content: center;
+        gap: 2.2rem;
+        flex-wrap: wrap;
+        margin-bottom: 3rem;
+        font-size: 0.95rem;
+    }
+
+    footer a { color: var(--cream); text-decoration: none; border-bottom: 1px solid #55534c; transition: border-color 0.2s, color 0.2s; }
+    footer a:hover { border-bottom-color: var(--blue); }
+
+    footer .copyright {
+        font-size: 0.8rem;
+        color: #6b6a63;
+        margin-top: 2.5rem;
+        border-top: 1px solid #33322e;
+        padding-top: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .hero { padding: 2rem; padding-top: 6rem; }
+        .hero h1 { font-size: 2.2rem; }
+        .hero-side p { font-size: 1.05rem; }
+        nav { padding: 1rem 1.5rem; }
+        .nav-links { gap: 1rem; }
+        .nav-link { display: none; }
+        .container { padding: 0 1.5rem; }
+        section { padding: 4rem 0; }
+        h2.section-title { font-size: 1.8rem; }
+        .tab-nav { flex-wrap: wrap; }
+        .hero-block { grid-template-columns: 1fr 1fr; }
+    }
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-logo">Dr A.Jeyasountharan</div>
+    <div class="nav-links">
+        <a class="nav-link" href="#profile">Profile</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#skills">Expertise</a>
+        <a class="nav-link" href="#education">Education</a>
+        <a class="nav-cta" href="#contact">Get in Touch</a>
+    </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero" id="home">
+    <div class="hero-inner">
+        <h1>Transforming Frontier <span class="accent">Deep-Tech</span> into Commercial Products &amp; Strategic Partnerships.</h1>
+        <div class="hero-side serif">
+            <div class="hero-cta" style="font-family: -apple-system, sans-serif;">
+                <a href="#experience" class="btn btn-primary">View Experience</a>
+            </div>
+            <div class="hero-cta hero-cta-secondary" style="font-family: -apple-system, sans-serif;">
+                <a href="#skills" class="btn btn-outline btn-small">Translational Expertise</a>
+                <a href="#awards" class="btn btn-outline btn-small">Awards</a>
+                <a href="#innovation-portfolio" class="btn btn-outline btn-small">Innovation Portfolio</a>
+            </div>
+        </div>
+    </div>
+
+    <p class="hero-block-title">Experience spanning biotechnology, AI, venture creation and product strategy.</p>
+
+    <div class="hero-block">
+        <div>
+            <div class="hero-stat-number">150+</div>
+            <div class="hero-stat-label">Customer &amp; stakeholder interviews</div>
+        </div>
+        <div>
+            <div class="hero-stat-number">7+</div>
+            <div class="hero-stat-label">Years in Biotech, Engineering &amp; AI</div>
+        </div>
+        <div>
+            <div class="hero-stat-number">2</div>
+            <div class="hero-stat-label">Patents filed in platform-based cell workflows</div>
+        </div>
+        <div>
+            <div class="hero-stat-number">5+</div>
+            <div class="hero-stat-label">Peer-reviewed publications</div>
+        </div>
+        <div>
+            <div class="hero-stat-number">3+</div>
+            <div class="hero-stat-label">Pilots validated across horizontal biotech markets</div>
+        </div>
+        <div>
+            <div class="hero-stat-number">£750K</div>
+            <div class="hero-stat-label">Consulting revenue generated as an Associate Consultant within first year</div>
+        </div>
+        <div>
+            <div class="hero-stat-number">£850K</div>
+            <div class="hero-stat-label">Funded project delivered against key product roadmap &amp; strategy milestones</div>
+        </div>
+        <div>
+            <div class="hero-stat-number">4+</div>
+            <div class="hero-stat-label">Bridging investor pitches</div>
+        </div>
+    </div>
+</div>
+
+<!-- Profile -->
+<section id="profile">
+    <div class="container">
+        <div class="eyebrow">Profile</div>
+        <h2 class="section-title">Bridging lab and boardroom</h2>
+        <p class="section-subtitle">Deep scientific expertise paired with commercial product strategy</p>
+
+        <div class="profile-text">
+            <p>Head of Commercial Applications and Product Manager specialising in deep-tech biotechnology, combining 7+ years of scientific expertise in microfluidics &amp; nanoparticle technologies, consulting, and bioanalytical platforms with commercial product strategy. PhD-trained engineer experienced in translating emerging technologies from research concepts into scalable solutions and market opportunities.</p>
+            <p>Proven track record conducting 150+ customer and stakeholder interviews across pharma and biotechnology, identifying unmet needs and translating technical challenges into product requirements, value propositions, and go-to-market strategies that move down the sales funnel.</p>
+            <p>Hands-on technical depth to match: designed, fabricated, and validated custom microfluidic devices for nanoparticle production and single-cell workflows, co-inventing 2 filed patents and publishing 5+ peer-reviewed papers along the way.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Experience -->
+<section id="experience" class="alt-bg">
+    <div class="container">
+        <div class="eyebrow">Experience</div>
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="section-subtitle">Toggle between commercial and technical framing of the same career</p>
+
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="showTab('pm')">Product &amp; Commercial Strategy</button>
+            <button class="tab-btn" onclick="showTab('eng')">Technical &amp; Engineering</button>
+            <button class="tab-btn" onclick="showTab('projects')">Personal Projects</button>
+        </div>
+
+        <!-- PM / Commercial Tab -->
+        <div class="tab-panel active" id="pm-tab">
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Head of Commercial Applications and Product Strategy</div>
+                    <div class="experience-date">Jan 2025 – Present</div>
+                </div>
+                <div class="experience-company">Siora Ltd | Wales</div>
+                <ul class="experience-bullets">
+                    <li>Own product strategy and lifecycle management for microfluidic platform serving pharmaceutical manufacturing customers. Gathered customer requirements from 20+ pharma and biotech accounts to define product roadmap.</li>
+                    <li>Developed product positioning, value proposition messaging, and launch strategy for nanoparticle-enabled antibody discovery platform. Conducted platform demonstrations and pilot programmes with 3+ key pharmaceutical accounts.</li>
+                    <li>Managed cross-functional product development collaboration between technical R&D, manufacturing, and commercial teams.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Senior Product & Commercial Strategy Officer</div>
+                    <div class="experience-date">Jun 2025 – Present</div>
+                </div>
+                <div class="experience-company">ICURe (Innovate UK) | Remote</div>
+                <ul class="experience-bullets">
+                    <li>Executed 150+ structured customer interviews with pharma, biotech, and pharmaceutical manufacturing teams across 4 continents to validate market demand for emerging microfluidic and nanoparticle technologies.</li>
+                    <li>Synthesised Voice of Customer insights into actionable product and commercial strategy. Developed competitive landscape analysis and identified new market segment opportunities.</li>
+                    <li>Advised deep-tech biotech startups on product commercialization strategy, positioning, and go-to-market approach.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Senior Research & Innovation Officer</div>
+                    <div class="experience-date">Feb 2024 – Present</div>
+                </div>
+                <div class="experience-company">Swansea University</div>
+                <ul class="experience-bullets">
+                    <li>Designed pharmaceutical manufacturing workflows grounded in customer pain points and practical laboratory constraints. Bridged academic research innovation with commercial manufacturability for nanoparticle production.</li>
+                    <li>Developed 2+ patents focused on single cell analysis, demonstrating direct commercial applications and clear pathways to market deployment.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Associate Consultant</div>
+                    <div class="experience-date">Feb 2023 – Feb 2024</div>
+                </div>
+                <div class="experience-company">RCK Partners | Greater London, United Kingdom · Hybrid</div>
+                <ul class="experience-bullets">
+                    <li>Delivered actionable solutions by translating complex technical and financial data into strategic insights for investment and government funding decisions.</li>
+                    <li>Supported client growth and investment strategy by identifying key opportunities to maximize ROI and improve operational outcomes.</li>
+                    <li>Converted technical indicators into commercially relevant insights, enabling the identification and pursuit of new growth opportunities.</li>
+                    <li>Collaborated with the commercial sales team on pre-sales activity, directly contributing to lead generation and solution development.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Operational Strategy Consultant (Part Time)</div>
+                    <div class="experience-date">Feb 2022 – Jan 2023</div>
+                </div>
+                <div class="experience-company">Amazon | Wales</div>
+                <ul class="experience-bullets">
+                    <li>Designed strategic frameworks for enterprise product and process optimization in regulated manufacturing environments.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Doctoral Research Scientist</div>
+                    <div class="experience-date">Apr 2020 – Dec 2022</div>
+                </div>
+                <div class="experience-company">Swansea University | Full-time</div>
+                <ul class="experience-bullets">
+                    <li>Innovated viscoelastic microfluidic devices through advanced fluid formulations and device designs to enhance uniform cell and particle distribution for biomedical and engineering biology workflows.</li>
+                    <li>Engineered scalable lab-on-chip solutions, significantly improving precision and efficiency in high-throughput biotech workflows.</li>
+                    <li>Authored 3+ peer-reviewed articles, showcasing novel scientific contributions to the field.</li>
+                    <li>Presented high-impact research findings at 2 international conferences, establishing early technical thought leadership in microfluidics.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Strategic Analyst (Internship)</div>
+                    <div class="experience-date">Jun 2021 – Aug 2021</div>
+                </div>
+                <div class="experience-company">JPMorgan Chase & Co. | Greater London</div>
+                <ul class="experience-bullets">
+                    <li>Conducted financial analysis and M&A evaluation of 15+ acquisition targets. Analyzed market dynamics and growth opportunities to inform investment strategy.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Engineering Tab -->
+        <div class="tab-panel" id="eng-tab">
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Microfluidics Engineer – Platform Development</div>
+                    <div class="experience-date">Jan 2025 – Present</div>
+                </div>
+                <div class="experience-company">Siora Ltd | Wales</div>
+                <ul class="experience-bullets">
+                    <li>Design and develop microfluidic platform technology for pharmaceutical manufacturing, owning device performance specification, fabrication workflows, and validation testing.</li>
+                    <li>Conducted technical pilot programmes with 3+ pharmaceutical accounts, validating device performance against real-world sample and throughput requirements.</li>
+                    <li>Collaborated with R&D and manufacturing teams to balance device performance, manufacturability constraints, and materials selection for scale-up.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Senior Research & Innovation Officer</div>
+                    <div class="experience-date">Feb 2024 – Present</div>
+                </div>
+                <div class="experience-company">Swansea University</div>
+                <ul class="experience-bullets">
+                    <li>Co-invented 2 filed patents in high-throughput microfluidic systems for biological analysis and single-cell experimentation.</li>
+                    <li>Delivered 20+ technical presentations to academic, industry, and investor audiences communicating complex microfluidic device innovations.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">PhD Researcher – Microfluidic Systems</div>
+                    <div class="experience-date">Oct 2019 – Dec 2022</div>
+                </div>
+                <div class="experience-company">Swansea University</div>
+                <ul class="experience-bullets">
+                    <li>Pioneered advanced microfluidic device design for nanoparticle production, high-throughput bioanalytical assays, and single-cell workflows. Designed and fabricated custom microfluidic cartridges for emulsion formation, mixing, and detection.</li>
+                    <li>Executed multi-year experimental research on fluid dynamics, transport phenomena, and microsystems engineering. Developed deep expertise in polymer materials, surface treatment, and design-for-manufacture.</li>
+                    <li>Conducted rigorous experimental validation on biological and pharmaceutical samples. Published 5+ peer-reviewed papers and presented at international scientific conferences.</li>
+                    <li>Co-invented 2 microfluidic systems now filed as patents, translating fundamental research into commercial-ready equipment with clear manufacturing pathways.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Technical Product & Commercial Strategy Officer</div>
+                    <div class="experience-date">Jun 2025 – Present</div>
+                </div>
+                <div class="experience-company">ICURe (Innovate UK) | Remote</div>
+                <ul class="experience-bullets">
+                    <li>Executed 150+ structured technical interviews with biotech founders and pharma scientists to validate device requirements and commercial viability of emerging microfluidic technologies.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Associate Consultant</div>
+                    <div class="experience-date">Feb 2023 – Feb 2024</div>
+                </div>
+                <div class="experience-company">RCK Partners | Greater London, United Kingdom · Hybrid</div>
+                <ul class="experience-bullets">
+                    <li>Conducted deep technical due diligence on 15+ microfluidic and bioanalytical manufacturing platforms, evaluating device design, manufacturability, and regulatory compliance.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-panel" id="projects-tab">
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Personal projects coming soon</div>
+                </div>
+                <ul class="experience-bullets">
+                    <li>Placeholder — send over the project names, dates, and a line on each and I'll fill this tab in.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+    <div class="container">
+        <div class="eyebrow">Expertise</div>
+        <h2 class="section-title">Technical &amp; Product Expertise</h2>
+        <p class="section-subtitle">Full-stack fluency from lab bench to go-to-market</p>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Engineering</h3>
+                <ul>
+                    <li>Microfluidic Device Design &amp; Fabrication</li>
+                    <li>LNP (Liquid Nanoparticles) &amp; Nano-emulsions</li>
+                    <li>Droplet Microfluidics &amp; Emulsion Formation</li>
+                    <li>Fluid Dynamics &amp; Transport Phenomena</li>
+                    <li>Design-for-Manufacture</li>
+                </ul>
+            </div>
+
+            <div class="skill-connector"><div class="skill-connector-dot">&darr;</div></div>
+
+            <div class="skill-card">
+                <h3>Science</h3>
+                <ul>
+                    <li>Cell Culture &amp; Development (PCR, Flow Cytometry)</li>
+                    <li>NGS Technologies &ndash; Oxford Nanopore</li>
+                    <li>CAR-T Workflows</li>
+                    <li>Nanomedicine &amp; Drug Development</li>
+                </ul>
+            </div>
+
+            <div class="skill-connector"><div class="skill-connector-dot">&darr;</div></div>
+
+            <div class="skill-card">
+                <h3>Product Strategy</h3>
+                <ul>
+                    <li>Product Roadmap Development</li>
+                    <li>Voice of Customer Research</li>
+                    <li>Competitive Analysis</li>
+                    <li>Go-to-Market Strategy</li>
+                    <li>Pricing Strategy</li>
+                </ul>
+            </div>
+
+            <div class="skill-connector"><div class="skill-connector-dot">&darr;</div></div>
+
+            <div class="skill-card">
+                <h3>Commercial &amp; Business</h3>
+                <ul>
+                    <li>B2B Product Marketing</li>
+                    <li>Equipment Demonstrations</li>
+                    <li>Regulatory Compliance (FDA, CE)</li>
+                    <li>Technology Commercialisation</li>
+                    <li>Business Analysis</li>
+                </ul>
+            </div>
+
+            <div class="skill-connector"><div class="skill-connector-dot">&darr;</div></div>
+
+            <div class="skill-card">
+                <h3>Financial &amp; Business Analysis</h3>
+                <ul>
+                    <li>Business Frameworks for Opportunity Growth</li>
+                    <li>Financial Analysis for Market Exploration &amp; Validation</li>
+                    <li>Business Strategy &amp; Pivots</li>
+                    <li>Financial Statement Alignment with R&amp;D Developments</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Education -->
+<section id="education" class="alt-bg">
+    <div class="container">
+        <div class="eyebrow">Education</div>
+        <h2 class="section-title">Education &amp; Credentials</h2>
+        <p class="section-subtitle">Swansea University</p>
+
+        <div class="education-grid">
+            <div class="education-item">
+                <div class="education-degree">PhD Chemical Engineering</div>
+                <div class="education-school">Swansea University &mdash; Microfluidic Systems &amp; Nanoparticles for Cell-Based Workflows</div>
+                <div class="education-year">2019 – 2022</div>
+            </div>
+            <div class="education-item">
+                <div class="education-degree">MSc Nanomedicine</div>
+                <div class="education-school">Swansea University</div>
+                <div class="education-year">2018 – 2019</div>
+            </div>
+            <div class="education-item">
+                <div class="education-degree">BSc Medical Biochemistry</div>
+                <div class="education-school">Swansea University</div>
+                <div class="education-year">2015 – 2018</div>
+            </div>
+        </div>
+
+        <div class="credentials-list" id="awards">
+            <div class="credential-item">
+                <span class="credential-name">PRINCE2 Project Management Foundation</span>
+                <span class="credential-org">PearlCert</span>
+            </div>
+            <div class="credential-item">
+                <span class="credential-name">IChemE Best Research Project Award 2025</span>
+                <span class="credential-org">Institution of Chemical Engineers</span>
+            </div>
+            <div class="credential-item">
+                <span class="credential-name">IChemE Global Awards Finalist 2025</span>
+                <span class="credential-org">Institution of Chemical Engineers</span>
+            </div>
+            <div class="credential-item">
+                <span class="credential-name">Silicon Gorge Catalyst</span>
+                <span class="credential-org">£1M fund pitch finalist</span>
+            </div>
+            <div class="credential-item">
+                <span class="credential-name">5+ Peer-Reviewed Publications</span>
+                <span class="credential-org">Microfluidic &amp; Nanoparticle Technologies</span>
+            </div>
+            <div class="credential-item">
+                <span class="credential-name">Innovate UK ICURe Commercialisation Programme, 2025–2026</span>
+                <span class="credential-org">Deep-Tech Platform Technology</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+    <div class="footer-title">Let's Connect</div>
+    <div class="footer-tagline">Engineering emerging technologies into real-world impact</div>
+    <div class="footer-contact">
+        <span>London / Swansea, UK</span>
+        <span>+44 7727 119635</span>
+        <a href="mailto:ano25029@gmail.com">ano25029@gmail.com</a>
+        <a href="https://linkedin.com/in/AnoshanthJeyasountharan" target="_blank">linkedin.com/in/AnoshanthJeyasountharan</a>
+    </div>
+    <div class="copyright">© 2026 Dr Anoshanth Jeyasountharan</div>
+</footer>
+
+<script>
+    function showTab(tab) {
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tab + '-tab').classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
